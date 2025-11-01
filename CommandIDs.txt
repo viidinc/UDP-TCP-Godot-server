@@ -1,0 +1,26 @@
+SERVER AND CLIENT HAS DIFFERENT LISTS OF COMMANDS
+
+
+--- SERVER ---
+
+
+[SYSTEM 0-1000]
+	0 - Register new connection
+
+[CHAT 1001-2000]
+	1001 - Chat message send
+	1002 - Change name color
+	
+[RANDOM 2001-3000]
+
+
+--- CLIENT ---
+
+
+[SYSTEM 0-1000]
+
+[CHAT 1001-2000]
+	1001 - Chat message recieved
+
+[RANDOM 2001-3000]
+	2001 - Move game window
