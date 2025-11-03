@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InfoObject" load_steps=4 format=3 uid="uid://dwuol3fug4ixt"]
+
+[ext_resource type="Script" uid="uid://b7y55paf7cqpj" path="res://multiplayer/ObjectManager/MultiplayerObjects/Info/InfoObject.gd" id="1_htd8s"]
+[ext_resource type="PackedScene" uid="uid://cyjopuow6u6jl" path="res://multiplayer/ObjectManager/MultiplayerObjects/Objects/client/TestCubeClient.scn" id="1_j04lq"]
+[ext_resource type="PackedScene" uid="uid://d4cj5bt25i0j2" path="res://multiplayer/ObjectManager/MultiplayerObjects/Objects/server/TestCubeServer.scn" id="3_dqf4e"]
+
+[resource]
+script = ExtResource("1_htd8s")
+name = "Cube"
+serverObject = ExtResource("3_dqf4e")
+clientObject = ExtResource("1_j04lq")
+metadata/_custom_type_script = "uid://b7y55paf7cqpj"

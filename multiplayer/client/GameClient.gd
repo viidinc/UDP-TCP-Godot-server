@@ -7,16 +7,22 @@ class_name GameClient
 
 ## In this case its local client
 
+signal connected
+
 var isRunning:bool = false
 var isConnected:bool = false
 
 var client:RemoteClient
+var objectManager:ObjectManager
 
 func run():
 	if isRunning:
 		push_warning("This client already running")
 		return
 	isRunning = true
+	
+	objectManager = ObjectManager.new(false)
+	add_child(objectManager)
 	
 	client = RemoteClient.new(PacketPeerUDP.new(), StreamPeerTCP.new())
 	
@@ -34,6 +40,7 @@ func connectTo(ip:String,port:int = DEFAULTPORT,nickname:String = str(ip))->Erro
 		client.sendPacketUDP(RegisterSolver.assembly(nickname))
 		client.sendPacketTCP(RegisterSolver.assembly(nickname))
 		isConnected = true
+		connected.emit()
 	else:
 		var err:Error
 		if errorTCP != OK:

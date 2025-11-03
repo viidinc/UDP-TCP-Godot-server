@@ -5,6 +5,7 @@ func _init() -> void:
 	appendSolver(ChatSolverProxy.new())
 	appendSolver(RegisterSolver.new())
 	appendSolver(ChatNameColor.new())
+	appendSolver(ObjectSyncProxy.new())
 
 ##Find solver and call it
 func solve(packet:PackedByteArray,client:RemoteClient = null):

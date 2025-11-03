@@ -11,6 +11,8 @@ var clients:Array[RemoteClient]
 
 var chat:Chat
 
+var objectManager:ObjectManager
+
 ##When we get tcp connection without udp client connection before
 var handledFreeTCPConnections:Array[StreamPeerTCP]
 
@@ -25,6 +27,9 @@ func run(port:int = DEFAULTPORT):
 	
 	chat = Chat.new()
 	chat.sys("Server inited")
+	
+	objectManager = ObjectManager.new(true)
+	add_child(objectManager)
 	
 	solver = ServerPacketSolver.new()
 	

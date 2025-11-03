@@ -61,6 +61,8 @@ func commandSolver(msg:String,client:RemoteClient = null):
 				var c:RemoteClient = MainHandler.server.clients.get(id)
 				if c != null:
 					c.sendPacketTCP(MoveGameWindow.assemble(x,y))
+		"make_cube":
+			MainHandler.server.objectManager.newObject("TestCube")
 		_:
 			if client:
 				client.sendPacketTCP(ChatSolverParce.assemble("Server","[color=red]Cannot find command "+str(cmd)+"[/color]"))

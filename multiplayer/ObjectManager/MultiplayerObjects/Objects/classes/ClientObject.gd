@@ -1,0 +1,2 @@
+extends SyncedObject
+class_name ClientObject
