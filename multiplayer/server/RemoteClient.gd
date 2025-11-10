@@ -8,6 +8,8 @@ var peerTCP:StreamPeerTCP
 
 var host:bool = false
 
+var player:Player
+
 var metadata:Dictionary[String,Variant] = {
 	
 	"name_color": Color.YELLOW,

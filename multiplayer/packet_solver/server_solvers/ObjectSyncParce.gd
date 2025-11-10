@@ -1,5 +1,5 @@
 extends CommandSolver
-class_name ObjectSyncParce
+class_name ObjectSyncParceServer
 
 func getID()->int:
 	return 3002
@@ -14,14 +14,17 @@ func solve(packet:PackedByteArray,client:RemoteClient = null):
 	var new_value = buffer.get_var()
 	
 	#Solving
-	var object = MainHandler.client.objectManager.objects[id]
-	
+	var object:Node = MainHandler.server.objectManager.objects[id]
 	if object:
-		if property_name == "position":
-			if "lerpPos" in object:
-				object.lerpPos = new_value
-		else:
-			object.set(property_name,new_value)
+		object.set(property_name,new_value)
+	MainHandler.server.sendEveryone(ObjectSyncParce.assemble(id,property_name,new_value))
+	return
+	var syncId:int = object.get_children().find_custom(func(node:Node): return node is NetworkSync)
+	if !syncId:
+		printerr("ERROR: Object ",object," does not have networkSync node!")
+	else:
+		var sync:NetworkSync = object.get_children().get(syncId)
+		sync.sync()
 
 static func assemble(objectId:int,property_name:String,new_value)->PackedByteArray:
 	var buffer = StreamPeerBuffer.new()

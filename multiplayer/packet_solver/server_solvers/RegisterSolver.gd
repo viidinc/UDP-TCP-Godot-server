@@ -8,7 +8,6 @@ func solve(packet:PackedByteArray,client:RemoteClient = null):
 	print("New client connected: ",packet.get_string_from_utf8())
 	print(packet)
 	MainHandler.server.sendEveryone(ChatSolverParce.assemble("Server","[color=green]"+client.name+"[/color] has been connected"))
-	pass
 
 static func assembly(name:String):
 	var buffer:StreamPeerBuffer = StreamPeerBuffer.new()

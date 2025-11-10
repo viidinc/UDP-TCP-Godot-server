@@ -3,8 +3,6 @@ extends Node
 class_name BasePacketSolver
 
 var Solvers:Array[CommandSolver] = [
-	
-	
 ]
 
 @abstract

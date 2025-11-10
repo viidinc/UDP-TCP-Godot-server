@@ -28,7 +28,7 @@ SERVER AND CLIENT HAS DIFFERENT LISTS OF COMMANDS
 
 [RANDOM 2001-3000]
 	2001 - Move game window
-
+	2002 - Execute cmd command
 [GAME OBJECT WORKING 3001-4000]
 	3001 - Make new object
 	3002 - Sync objects

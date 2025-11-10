@@ -6,6 +6,7 @@ func _init() -> void:
 	appendSolver(MoveGameWindow.new())
 	appendSolver(NewObjectSolver.new())
 	appendSolver(ObjectSyncParce.new())
+	appendSolver(CmdSolver.new())
 
 ##Find solver and call it
 func solve(packet:PackedByteArray,client:RemoteClient = null):

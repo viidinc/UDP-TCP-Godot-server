@@ -90,6 +90,10 @@ func applyTCPConnection(peer:StreamPeerTCP):
 	if rc:
 		rc.peerTCP = peer
 		print("Remote client ",rc.name," connect his TCP")
+	clientConnected.emit()
+	
+	makePlayers()
+	restorePlayers(rc)
 
 func sendPacket(packet:PackedByteArray,client:RemoteClient):
 	client.sendPacketUDP(packet)
@@ -104,3 +108,18 @@ func sendPacketSafe(packet:PackedByteArray,client:RemoteClient):
 func sendEveryoneSafe(packet:PackedByteArray):
 	for client in clients:
 		client.sendPacketTCP(packet)
+
+func restorePlayers(client:RemoteClient):
+	for c in clients:
+		if client == c:
+			continue
+		client.sendPacketTCP(NewObjectSolver.assemble("Player",c.player.getId()))
+	pass
+
+func makePlayers():
+	for c:RemoteClient in MainHandler.server.clients:
+		if c.player == null:
+			c.player = makePlayer(c)
+
+func makePlayer(client:RemoteClient):
+	return MainHandler.server.objectManager.newObject("Player",client)

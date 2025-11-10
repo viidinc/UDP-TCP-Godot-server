@@ -11,8 +11,6 @@ static var client:GameClient
 
 @export var name_line:LineEdit
 
-
-
 func runClient():
 	if client != null:
 		return
@@ -40,4 +38,3 @@ func startGame():
 	if !client.isConnected:
 		push_error("Cannot start game without connection")
 	client.add_child(preload("res://main/modules/world/World2d.scn").instantiate())
-	pass
